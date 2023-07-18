@@ -14,7 +14,6 @@ vpc_create_flow_log_cloudwatch_iam_role  = true
 vpc_create_flow_log_cloudwatch_log_group = true
 
 
-
 ### EKS ###
 
 eks_cluster_name                    = "cloyalty"
@@ -90,28 +89,17 @@ eks_managed_node_groups = {
 
 
 helms = {
-
-  # prometheus_stack = {
-  #   name             = "kube-prometheus-stack"
-  #   repository       = "https://prometheus-community.github.io/helm-charts"
-  #   chart            = "kube-prometheus-stack"
-  #   namespace        = "kube-prometheus-stack"
-  #   values           = "./helms/kube-prometheus/values.yaml"
-  #   force_update     = true
-  #   create_namespace = true
-  #   version          = "46.4.0"
-  # }
-
-  # nginx = {
-  #   name             = "ingress-nginx"
-  #   repository       = "https://kubernetes.github.io/ingress-nginx"
-  #   chart            = "ingress-nginx"
-  #   namespace        = "ingress-nginx"
-  #   values           = "./helms/ingress-nginx/values.yaml"
-  #   force_update     = true
-  #   create_namespace = true
-  #   version          = "4.7.0"
-  # }
+  
+  nginx = {
+    name             = "ingress-nginx"
+    repository       = "https://kubernetes.github.io/ingress-nginx"
+    chart            = "ingress-nginx"
+    namespace        = "ingress-nginx"
+    values           = "./helms/ingress-nginx/values.yaml"
+    force_update     = true
+    create_namespace = true
+    version          = "4.7.0"
+  }
 
 }
 

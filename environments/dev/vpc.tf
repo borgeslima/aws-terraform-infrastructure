@@ -32,3 +32,12 @@ module "vpc" {
 
   })
 }
+
+
+# module "vpc_peering" {
+
+#   source = "../../modules/aws/vpc-peering"
+#   peer_vpc_id = "vpc-01df3640d97d4f4db" 
+#   vpc_id = module.vpc.vpc_id
+  
+# }
