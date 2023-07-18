@@ -16,7 +16,7 @@ vpc_create_flow_log_cloudwatch_log_group = true
 
 ### EKS ###
 
-eks_cluster_name                    = "cloyalty"
+eks_cluster_name                    = "loyalty"
 eks_cluster_version                 = "1.25"
 eks_cluster_endpoint_private_access = true
 eks_cluster_endpoint_public_access  = true
@@ -85,11 +85,19 @@ eks_managed_node_groups = {
 }
 
 
+### VPC PEERING ###
+
+
+destination_cidr_block_peer_vpc = "" # "172.47.0.0/16"
+peer_vpc_id                     = "" # "vpc-01df3640d97d4f4db"
+peer_vpc_default_route_table_id = "" # "rtb-0abc71eac66236888"
+
+
 ### HELMS ###
 
 
 helms = {
-  
+
   nginx = {
     name             = "ingress-nginx"
     repository       = "https://kubernetes.github.io/ingress-nginx"

@@ -115,6 +115,21 @@ variable "tags" {
   description = "Global Tags"
 }
 
+variable "destination_cidr_block_peer_vpc" {
+  type        = string
+  description = "CIDR Block destination"
+}
+
+variable "peer_vpc_id" {
+  type        = string
+  description = "VPC Peering ID"
+}
+
+variable "peer_vpc_default_route_table_id" {
+  type        = string
+  description = "Default Route Table ID"
+}
+
 
 
 

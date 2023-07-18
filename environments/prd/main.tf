@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "random_string" "sufix" {
-  length  = 3
+  length  = 4
   special = false
 }
 
@@ -23,13 +23,13 @@ module "eks" {
   eks_node_security_group_additional_rules = merge(
     var.eks_node_security_group_additional_rules
   )
-  
+
   eks_managed_node_groups = merge(
     var.eks_managed_node_groups
   )
 
   eks_node_security_group_tags = merge({
-      "kubernetes.io/cluster/${var.eks_cluster_name}-${random_string.sufix.result}" = null
+    "kubernetes.io/cluster/${var.eks_cluster_name}-${random_string.sufix.result}" = null
   })
 
   eks_tags = {}

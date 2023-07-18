@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"eks","Source":"./aws/eks","Dir":""},{"Key":"helm_release","Source":"./helm","Dir":""},{"Key":"vpc","Source":"./aws/vpc","Dir":""},{"Key":"","Source":"","Dir":"."}]}

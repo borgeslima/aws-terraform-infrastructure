@@ -6,7 +6,7 @@ provider "helm" {
   }
 }
 
-module "helm_release"{
+module "helm_release" {
 
   source = "./helm"
 
@@ -18,8 +18,8 @@ module "helm_release"{
   helm_namespace        = each.value.namespace
   helm_force_update     = each.value.force_update
   helm_create_namespace = each.value.create_namespace
-  helm_version     = each.value.version
-  helm_values      = each.value.values
+  helm_version          = each.value.version
+  helm_values           = each.value.values
 
   depends_on = [module.eks]
 }
