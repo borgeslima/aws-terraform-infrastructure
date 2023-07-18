@@ -1,0 +1,15 @@
+resource "helm_release" "addons" {
+  name              = try(var.helm_name, "")
+  repository        = try(var.helm_repository, "")
+  chart             = try(var.helm_chart, "")
+  namespace         = try(var.helm_namespace, "")
+  force_update      = try(var.helm_force_update, true)
+  create_namespace  = try(var.helm_create_namespace, true)
+  values            = try(["${file(var.helm_values)}"], [])
+  version           = try(var.helm_version, "")
+  timeout           = try(var.helm_timeout, 300)
+  wait              = try(var.helm_wait, false)
+  cleanup_on_fail   = try(var.helm_cleanup_on_fail, false)
+  disable_crd_hooks = try(var.helm_disable_crd_hooks, false)
+  lint              = try(var.helm_disable_crd_hooks, false)
+}
