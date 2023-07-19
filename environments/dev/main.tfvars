@@ -2,10 +2,10 @@
 ### VPC ###
 
 vpc_name                                 = "loyalty"
-vpc_cidr                                 = "172.0.0.0/16"
+vpc_cidr                                 = "173.0.0.0/16"
 vpc_azs                                  = ["us-east-1a", "us-east-1b", "us-east-1c"]
-vpc_private_subnets                      = ["172.0.48.0/24", "172.0.64.0/24", "172.0.80.0/24"]
-vpc_public_subnets                       = ["172.0.0.0/24", "172.0.16.0/24", "172.0.32.0/24"]
+vpc_private_subnets                      = ["173.0.48.0/24", "173.0.64.0/24", "173.0.80.0/24"]
+vpc_public_subnets                       = ["173.0.0.0/24", "173.0.16.0/24", "173.0.32.0/24"]
 vpc_enable_nat_gateway                   = true
 vpc_single_nat_gateway                   = true
 vpc_enable_dns_hostnames                 = true
@@ -86,7 +86,6 @@ eks_managed_node_groups = {
 
 
 ### VPC PEERING ###
-
 
 destination_cidr_block_peer_vpc = "172.47.0.0/16"
 peer_vpc_id                     = "vpc-01df3640d97d4f4db"

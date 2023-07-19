@@ -32,23 +32,3 @@ module "vpc" {
 }
 
 
-module "vpc_peering" {
-
-  source                          = "./aws/vpc-peering"
-
-  vpc_id                          = module.vpc.vpc_id
-  peer_vpc_id                     = var.peer_vpc_id
-
-  auto_accept                     = true
-  allow_remote_vpc_dns_resolution = true
-  
-  vpc_default_route_table_id      = module.vpc.default_route_table_id
-  peer_vpc_default_route_table_id = var.peer_vpc_default_route_table_id
-  destination_cidr_block_peer_vpc = var.vpc_cidr
-  destination_cidr_block_vpc      = var.destination_cidr_block_peer_vpc 
-  
-  tags = merge(var.tags, {
-
-  })
-  depends_on = [module.vpc]
-}
