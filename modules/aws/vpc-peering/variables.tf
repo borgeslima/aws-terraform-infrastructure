@@ -28,9 +28,9 @@ variable "destination_cidr_block_peer_vpc" {
 }
 
 variable "vpc_default_route_table_id" {
-  type = string
+  type = any
 }
 
 variable "peer_vpc_default_route_table_id" {
-  type = string
+  type = any
 }

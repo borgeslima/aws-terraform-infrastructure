@@ -34,17 +34,21 @@ module "vpc" {
 
 module "vpc_peering" {
 
-  source = "./aws/vpc-peering"
+  source                          = "./aws/vpc-peering"
 
   vpc_id                          = module.vpc.vpc_id
+  peer_vpc_id                     = var.peer_vpc_id
+
   auto_accept                     = true
   allow_remote_vpc_dns_resolution = true
-  destination_cidr_block_vpc      = var.vpc_cidr
-  vpc_default_route_table_id      = module.vpc.vpc_default_route_table_id
-  destination_cidr_block_peer_vpc = "" # "172.47.0.0/16"
-  peer_vpc_id                     = "" # "vpc-01df3640d97d4f4db"
-  peer_vpc_default_route_table_id = "" # "rtb-0abc71eac66236888"
-  tags                            = merge(var.tags, {})
+  
+  vpc_default_route_table_id      = module.vpc.default_route_table_id
+  peer_vpc_default_route_table_id = var.peer_vpc_default_route_table_id
+  destination_cidr_block_peer_vpc = var.vpc_cidr
+  destination_cidr_block_vpc      = var.destination_cidr_block_peer_vpc 
+  
+  tags = merge(var.tags, {
 
+  })
   depends_on = [module.vpc]
 }

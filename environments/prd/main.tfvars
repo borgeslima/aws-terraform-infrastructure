@@ -80,7 +80,7 @@ eks_managed_node_groups = {
     platform       = "bottlerocket"
     instance_types = ["m5.xlarge"]
     desired_size   = 2
-    capacity_type  = "SPOT"
+    capacity_type  = "ON_DEMAND"
   }
 }
 
@@ -88,9 +88,9 @@ eks_managed_node_groups = {
 ### VPC PEERING ###
 
 
-destination_cidr_block_peer_vpc = "" # "172.47.0.0/16"
-peer_vpc_id                     = "" # "vpc-01df3640d97d4f4db"
-peer_vpc_default_route_table_id = "" # "rtb-0abc71eac66236888"
+destination_cidr_block_peer_vpc = "172.47.0.0/16"
+peer_vpc_id                     = "vpc-01df3640d97d4f4db"
+peer_vpc_default_route_table_id = "rtb-0abc71eac66236888"
 
 
 ### HELMS ###
