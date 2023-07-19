@@ -1,0 +1,6 @@
+helms/argo-cd/*
+helms/cert-manager/*
+helms/ingress-nginx/*
+helms/kube-prometheus/*
+.terragrunt-cache
+.terraform.lock.hcl
