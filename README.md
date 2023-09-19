@@ -16,8 +16,8 @@ Infrastructure as code, also referred to as IaC, is an IT practice that codifies
 # Requirements
 
 - AWS CLI (config aws credentials)
-- Terraform CLI
-- Terragrunt CLI
+- Terraform CLI (v1.3.6)
+- Terragrunt CLI (1.5.7)
 
 # AWS-driven IAC review
 

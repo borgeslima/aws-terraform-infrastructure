@@ -2,6 +2,7 @@ resource "aws_vpc_peering_connection" "peering" {
   vpc_id      = var.vpc_id
   peer_vpc_id = var.peer_vpc_id
   auto_accept = var.auto_accept
+  peer_owner_id = var.peer_owner_id
   tags        = var.tags
 
 
@@ -36,12 +37,12 @@ resource "aws_vpc_peering_connection_options" "default" {
 
 resource "aws_route" "route_vpc" {
   route_table_id         = var.vpc_default_route_table_id
-  destination_cidr_block = var.destination_cidr_block_vpc
+  destination_cidr_block = var.destination_cidr_block_peer_vpc
   vpc_peering_connection_id = aws_vpc_peering_connection.peering.id
 }
 
 resource "aws_route" "route_peer" {
   route_table_id         = var.peer_vpc_default_route_table_id
-  destination_cidr_block = var.destination_cidr_block_peer_vpc
+  destination_cidr_block = var.destination_cidr_block_vpc
   vpc_peering_connection_id = aws_vpc_peering_connection.peering.id
 }

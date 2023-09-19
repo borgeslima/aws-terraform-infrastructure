@@ -34,3 +34,8 @@ variable "vpc_default_route_table_id" {
 variable "peer_vpc_default_route_table_id" {
   type = any
 }
+
+variable "peer_owner_id" {
+  type = string
+  description = "Is mandatory if your vpc is antoher across account id"
+}

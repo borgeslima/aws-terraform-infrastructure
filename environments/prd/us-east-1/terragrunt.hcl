@@ -4,7 +4,7 @@ include {
 }
 
 terraform {
-  source = "../../modules"
+  source = "../../../modules"
 
   extra_arguments "var-file" {
     commands = ["apply", "plan", "destroy"]

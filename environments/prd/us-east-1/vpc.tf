@@ -26,29 +26,36 @@ module "vpc" {
     "kubernetes.io/role/internal-elb"                                             = 1
   }
 
-  vpc_tags = merge(var.tags, {
-
-  })
+  vpc_tags = merge(var.tags, {})
 }
 
 
 module "vpc_peering" {
 
+  for_each = var.vpc_for_peering
+
   source                          = "./aws/vpc-peering"
 
+
+  ## VPC Principal ##
+
   vpc_id                          = module.vpc.vpc_id
-  peer_vpc_id                     = var.peer_vpc_id
+  vpc_default_route_table_id      = module.vpc.default_route_table_id
+  destination_cidr_block_vpc      = module.vpc.cidr_block
+
+  ## Mutual Accept ##
 
   auto_accept                     = true
   allow_remote_vpc_dns_resolution = true
-  
-  vpc_default_route_table_id      = module.vpc.default_route_table_id
-  peer_vpc_default_route_table_id = var.peer_vpc_default_route_table_id
-  destination_cidr_block_peer_vpc = var.vpc_cidr
-  destination_cidr_block_vpc      = var.destination_cidr_block_peer_vpc 
-  
-  tags = merge(var.tags, {
 
-  })
+  ## Dynamic VPC for Perring ##
+   
+  peer_vpc_id                     = each.value.vpc_id
+  destination_cidr_block_peer_vpc = each.value.cidr_block
+  peer_vpc_default_route_table_id = each.value.route_table_main_id
+  peer_owner_id                   = each.value.peer_owner_id
+  
+  tags = merge(var.tags, {})
+
   depends_on = [module.vpc]
 }

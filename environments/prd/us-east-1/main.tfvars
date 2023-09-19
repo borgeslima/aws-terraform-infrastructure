@@ -60,26 +60,27 @@ eks_node_security_group_additional_rules = {
   }
 }
 
-### SPOT NODE GROUP  ###
+### NODE GROUP  ###
 
 eks_managed_node_groups = {
-  spot = {
-    name           = "node-group-1"
-    min_size       = 1
-    max_size       = 3
-    platform       = "bottlerocket"
-    instance_types = ["m6i.large"]
-    desired_size   = 2
-    capacity_type  = "SPOT"
-  }
 
   on_demand = {
     name           = "node-group-2"
     min_size       = 1
-    max_size       = 3
+    max_size       = 6
     platform       = "bottlerocket"
     instance_types = ["m5.xlarge"]
-    desired_size   = 2
+    desired_size   = 3
+    capacity_type  = "ON_DEMAND"
+  }
+
+  on_demand2 = {
+    name           = "node-group-1"
+    min_size       = 1
+    max_size       = 6
+    platform       = "bottlerocket"
+    instance_types = ["m6i.large"]
+    desired_size   = 3
     capacity_type  = "ON_DEMAND"
   }
 }
@@ -88,9 +89,24 @@ eks_managed_node_groups = {
 ### VPC PEERING ###
 
 
-destination_cidr_block_peer_vpc = "172.47.0.0/16"
-peer_vpc_id                     = "vpc-01df3640d97d4f4db"
-peer_vpc_default_route_table_id = "rtb-0abc71eac66236888"
+vpc_for_peering = {
+
+ /*
+  vpc_loyalty = {
+    cidr_block                      = "172.47.0.0/16"
+    vpc_id                          = "vpc-01df3640d97d4f4db"
+    description                     = "loyalty"
+    peer_owner_id                   = ""
+    auto_accept                     = true
+    connection_auto_accepter        = true
+    allow_remote_vpc_dns_resolution = true
+    route_table_main_id             = "rtb-0abc71eac66236888"
+  }
+
+*/
+}
+
+
 
 
 ### HELMS ###
